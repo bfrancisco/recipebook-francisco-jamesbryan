@@ -4,7 +4,7 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse('landing page')
 
-def recipe_list(request):
+def recipes_list(request):
     ctx = {
         "recipes": [
             {
