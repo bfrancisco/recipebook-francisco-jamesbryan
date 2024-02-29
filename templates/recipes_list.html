@@ -8,9 +8,9 @@
 <body>
     <h1>Recipe Book</h1>
     <ul>
-        {% for recipe in recipes %}
+        {% for recipe in object_list %}
             <li>     
-                <a href="/ledger{{ recipe.link }}">{{ recipe.name }}</a>
+                <a href="/ledger/recipe/{{ recipe.pk }}">{{ recipe.name }}</a>
             </li>
         {% endfor %}
     </ul>
