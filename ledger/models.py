@@ -6,33 +6,42 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
-        return f'[INGREDIENT] {self.name}'
+        return f'{self.name}'
 
-    # set url
+    def get_absolute_url(self):
+        return reverse('ledger:ingredient-detail', args=[str(self.pk)])
     
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
-        return f'[RECIPE] {self.name}'
+        return f'{self.name}'
 
-    # not sure
     def get_absolute_url(self):
-        return reverse(f'/recipe/{self.pk}', args=[str(self.pk)])
+        return reverse('ledger:recipe-detail', args=[str(self.pk)])
 
 class RecipeIngredient(models.Model):
     quantity = models.CharField(max_length=100)
     ingredient = models.ForeignKey(
         'Ingredient',
         on_delete=models.CASCADE, 
-        default=0, 
-        related_name='ingredients'
+        default=1, 
+        related_name='recipe'
     )
     recipe = models.ForeignKey(
         'Recipe',
         on_delete=models.CASCADE, 
-        default=0, 
-        related_name='recipe'
+        default=1, 
+        related_name='ingredients'
     )
+
+    def __str__(self):
+        return f'From {self.recipe.name}, {self.ingredient.name}, {self.quantity}'
+
+    class Meta:
+        ordering = ['ingredient']
+        unique_together = [
+            ['quantity', 'ingredient'],
+        ]
 
     

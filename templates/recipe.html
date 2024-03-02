@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Book</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Book</title>
 </head>
 <body>
-    <!-- <h1>Recipe Book</h1>
-    <h1>{{ name }}</h1>
-    <h2>Ingredients:</h2>
-    <ul>
-        {% for ingredient in ingredients %}
-            <li>{{ ingredient.name }}, {{ ingredient.quantity }}</li>
-        {% endfor %}
-    </ul> -->
-    <p>{{ object }}</p>
-    <a href="/ledger/recipes/list">Go back to Recipe List</a>
+  <a href="/ledger/recipes/list">
+    <h1>Recipe Book</h1>
+  </a>
+  <h1>{{ object.name }}</h1>
+  <h2>Ingredients:</h2>
+  <ul>
+    {% for ingredient in object.ingredients.all %}
+      <li>{{ ingredient.ingredient.name }}, {{ ingredient.quantity }}</li>
+    {% endfor %}
+  </ul>
 </body>
 </html>
