@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Recipe Book{% endblock %}
+{% block header %}Recipe Detail{% endblock %}
+{% block title %}{{ object.name }}{% endblock %}
 {% block content %}
-  <h1>{{ object.name }}</h1>
+  <h2>{{ object.name }} by {{ object.author }}</h2>
   <h2>Ingredients:</h2>
   <ul>
     {% for ingredient in object.ingredients.all %}

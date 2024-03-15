@@ -6,7 +6,8 @@ from ledger.models import Recipe, Ingredient, RecipeIngredient
 db = {
     "recipes": [
         {
-            "name": "Recipe 1",
+            "name": "Sinigang",
+            "author": "Gordon Ramsay",
             "ingredients": [
                 {
                     "name": "tomato",
@@ -32,7 +33,8 @@ db = {
             "link": "/recipe/1"
         },
         {
-            "name": "Recipe 2",
+            "name": "Adobo",
+            "author": "Mom",
             "ingredients": [
                 {
                     "name": "garlic",
@@ -71,7 +73,7 @@ db = {
 for recipe in db['recipes']:
     reci_instance = Recipe()
     reci_instance.name = recipe['name']
-
+    reci_instance.author = recipe['author']
     reci_instance.save()
 
     for ingredient in recipe['ingredients']:
